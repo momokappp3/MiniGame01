@@ -1,6 +1,4 @@
-
 #include "ModeBase.h"
-
 
 ModeBase::ModeBase() {
 	_szName = "";
@@ -22,7 +20,6 @@ ModeBase::ModeBase() {
 ModeBase::~ModeBase() {
 }
 
-
 // ModeServerに接続時、Process()の前に一度だけ呼ばれる
 bool	ModeBase::Initialize() {
 
@@ -34,7 +31,6 @@ bool	ModeBase::Terminate() {
 
 	return true;
 }
-
 
 // --------------------------------------------------------------------------
 /// @brief 毎フレーム呼ばれる。処理部を記述

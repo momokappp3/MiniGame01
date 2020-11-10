@@ -49,13 +49,13 @@ public:
 
 
 private:
-	lstModeBase		_vMode;			// モードリスト
-	int				_uid_count;		// uidカウンタ
-	lstModeBase		_vModeAdd;		// 追加予約
-	lstModeBase		_vModeDel;		// 削除予約
+	lstModeBase	_vMode;			// モードリスト
+	int	_uid_count;		// uidカウンタ
+	lstModeBase	_vModeAdd;		// 追加予約
+	lstModeBase	_vModeDel;		// 削除予約
 
-	ModeBase		*_nowMode;		// 現在呼び出し中のモード
-	ModeBase		*_skipProcessMode;	// このモードより下はProcessを呼ばない
-	ModeBase		*_skipRenderMode;	// このモードより下はRenderを呼ばない
-	ModeBase		*_pauseProcessMode;	// このモードより下はProcess時に時間経過をさせない
+	ModeBase *_nowMode;  // 現在呼び出し中のモード
+	ModeBase *_skipProcessMode;  // このモードより下はProcessを呼ばない
+	ModeBase *_skipRenderMode;  // このモードより下はRenderを呼ばない
+	ModeBase *_pauseProcessMode;  // このモードより下はProcess時に時間経過をさせない
 };

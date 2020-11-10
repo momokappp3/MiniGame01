@@ -1,4 +1,5 @@
 #include "../appframe.h"
+#include "../../Fade.h"
 
 int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow) {
 
@@ -9,13 +10,21 @@ int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,i
 		return 0;
 	}
 
+	if (!Fade::Init()) {
+		return -1;
+	}
+
 	while (ProcessMessage() == 0){
 	
 		appBase->Input();
 		appBase->Process();
 
+		Fade::Process();
+
 		ClearDrawScreen();		// ‰æ–Ê‚ð‰Šú‰»‚·‚é
 		appBase->Render();
+
+		Fade::Draw();
 		ScreenFlip();			// — ‰æ–Ê‚Ì“à—e‚ð•\‰æ–Ê‚É”½‰f‚³‚¹‚é
 	}
 

@@ -1,6 +1,4 @@
-
 #include "appframe.h"
-
 
 class ModeGame : public ModeBase
 {

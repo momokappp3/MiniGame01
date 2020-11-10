@@ -1,8 +1,8 @@
-
 #include "AppFrame.h"
 #include "ApplicationMain.h"
 #include "ModeTitle.h"
 #include "ModeGame.h"
+#include "../../../AppFrame/Fade.h"
 
 bool ModeTitle::Initialize() {
 	if (!base::Initialize()) {
@@ -27,6 +27,8 @@ bool ModeTitle::Process() {
 	int trg = ApplicationMain::GetInstance()->GetTrg();  //押した瞬間しか反応しないキー
 
 	if (trg & PAD_INPUT_4)	{
+		Fade::Reset();
+		Fade::Start();
 		ModeServer::GetInstance()->Del(this);  // このモードを削除予約
 		ModeServer::GetInstance()->Add(new ModeGame(), 1, "game");  // 次のモードを登録
 	}

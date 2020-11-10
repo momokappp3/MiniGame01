@@ -4,7 +4,7 @@
 #include "ModeTitle.h"
 
 // ŽÀ‘Ì
-ApplicationMain				g_oApplicationMain;
+ApplicationMain	g_oApplicationMain;
 
 bool ApplicationMain::Initialize(HINSTANCE hInstance) {
 	if (!base::Initialize(hInstance)) { return false; }

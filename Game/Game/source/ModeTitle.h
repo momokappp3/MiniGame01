@@ -1,9 +1,6 @@
-
 #include "appframe.h"
 
-
-class ModeTitle : public ModeBase
-{
+class ModeTitle : public ModeBase{
 	typedef ModeBase base;
 public:
 	virtual bool Initialize();
@@ -12,7 +9,5 @@ public:
 	virtual bool Render();
 
 protected:
-
 	int _cg;
-
 }; 

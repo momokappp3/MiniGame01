@@ -1,12 +1,9 @@
 #pragma once
-
 #include	<string>
 
-class ModeServer;
+class ModeServer;  //前方宣言(型しか必要ない場合はこの記述)
 
-
-class		ModeBase
-{
+class ModeBase{
 public:
 	ModeBase();
 	virtual ~ModeBase();
@@ -16,8 +13,6 @@ public:
 	virtual bool	Process();
 	virtual bool	Render();
 
-
-public:
 	int	GetModeCount() { return _cntMode; }			// このモードが始まってからのカウンタ
 	unsigned long GetModeTm() { return _tmMode; }	// このモードが始まってからの時間ms
 	unsigned long GetStepTm() { return _tmStep; }	// 前フレームからの経過時間ms
@@ -27,13 +22,12 @@ public:
 	int GetCallPerFrame() { return _callPerFrame; }
 	int GetCallOfCount() { return _callOfCount; }
 
-
 private:
 	friend	ModeServer;
 	// ModeServer用
-	std::string		_szName;
-	int				_uid;
-	int				_layer;
+	std::string _szName;
+	int	_uid;
+	int	_layer;
 
 	void StepTime(unsigned long tmNow);
 	void StepCount();

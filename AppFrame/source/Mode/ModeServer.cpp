@@ -1,11 +1,9 @@
-﻿
-#include <cstddef>
+﻿#include <cstddef>
 #include "DxLib.h"
 #include "ModeServer.h"
 
-
 /// インスタンス 
-ModeServer		*ModeServer::_lpInstance = NULL;
+ModeServer *ModeServer::_lpInstance = NULL;
 
 // --------------------------------------------------------------------------
 /// @brief コンストラクタ 
@@ -29,20 +27,24 @@ ModeServer::~ModeServer()
 	_lpInstance = NULL;
 }
 
-
 // 登録はするが、一度メインを回さないといけない
 int ModeServer::Add(ModeBase *mode, int layer, const char *name ) {
+
 	_vModeAdd.push_back(mode);		// 登録予約
 	mode->_uid = _uid_count;
+
 	_uid_count++;
+
 	mode->_layer = layer;
 	mode->_szName = name;
+
 	return mode->_uid;
 }
 
 // 削除予約
 int ModeServer::Del(ModeBase *mode) {
 	_vModeDel.push_back(mode);
+
 	return 0;
 }
 
@@ -78,8 +80,6 @@ void ModeServer::Clear() {
 	_vModeAdd.clear();
 	_vModeDel.clear();
 }
-
-
 
 // 削除予約されているか？
 bool ModeServer::IsDelRegist(ModeBase *mode) {
@@ -158,9 +158,6 @@ const char *ModeServer::GetName(ModeBase* mode) {
 const char *ModeServer::GetName(int uid) {
 	return GetName(Get(uid));
 }
-
-
-
 
 // プロセスを回すための初期化
 int ModeServer::ProcessInit() {

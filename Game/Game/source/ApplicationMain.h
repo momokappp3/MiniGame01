@@ -1,21 +1,24 @@
-
 #include "appframe.h"
 
-
-class ApplicationMain : public ApplicationBase
-{
-	typedef ApplicationBase base;
+class ApplicationMain : public ApplicationBase {
+	//typedef ApplicationBase base;  //cのやり方　名前をつけている
+	using base = ApplicationBase;  //c++
 public:
-	virtual bool Initialize(HINSTANCE hInstance);
-	virtual bool Terminate();
-	virtual bool Input();
-	virtual bool Process();
-	virtual bool Render();
+	bool Initialize(HINSTANCE hInstance) override;
+	bool Terminate() override;
+	bool Input() override;
+	bool Process() override;
+	bool Render() override;
 
-	virtual bool AppWindowed() { return true; }
-	virtual int DispSizeW() { return 1280; }
-	virtual int DispSizeH() { return 720; }
+	bool AppWindowed() override {
+#ifdef _DEBUG  //デバッグビルド
+		return true; 
+#else   //リリースビルド
+		return false;
+#endif
+	}
+	int DispSizeW() override { return 1280; }
+	int DispSizeH() override { return 720; }
 
 protected:
-
 }; 

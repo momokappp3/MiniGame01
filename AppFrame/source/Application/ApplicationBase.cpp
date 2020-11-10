@@ -6,6 +6,9 @@ ApplicationBase	*ApplicationBase::_lpInstance = NULL;
 
 ApplicationBase::ApplicationBase() {
 	_lpInstance = this;
+	_serverMode = nullptr;
+	_gKey = 0;
+	_gTrg = 0;
 }
 
 ApplicationBase::~ApplicationBase() {
@@ -45,6 +48,7 @@ bool ApplicationBase::Terminate() {
 bool ApplicationBase::Input() {
 	// キーの入力、トリガ入力を得る
 	int keyold = _gKey;
+
 	_gKey = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	_gTrg = (_gKey ^ keyold) & _gKey;	// キーのトリガ情報生成（押した瞬間しか反応しないキー情報）
 
