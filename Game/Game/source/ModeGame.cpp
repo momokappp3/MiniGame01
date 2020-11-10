@@ -35,6 +35,9 @@ bool ModeGame::Process() {
 	if (key & PAD_INPUT_UP)		{ _y -= 8; }
 	if (key & PAD_INPUT_DOWN)	{ _y += 8; }
 
+
+	//test
+
 	return true;
 }
 
