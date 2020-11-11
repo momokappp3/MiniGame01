@@ -14,4 +14,11 @@ protected:
 	int _cg;
 	int _x, _y;
 
+
+	//////////
+	int _attachIndex;
+	float _totalTime;
+	float _playTime;
+
+
 }; 
