@@ -5,7 +5,7 @@
 #include "../../../AppFrame/Fade.h"
 
 bool ModeTitle::Initialize() {
-	if (!base::Initialize()) {
+	if (!ModeBase::Initialize()) {
 		return false; 
 	}
 
@@ -14,15 +14,8 @@ bool ModeTitle::Initialize() {
 	return true;
 }
 
-bool ModeTitle::Terminate() {
-	// _cg を解放しないといけないけど、AMLibは個別解放できない・・
-	base::Terminate();
-
-	return true;
-}
-
 bool ModeTitle::Process() {
-	base::Process();
+	ModeBase::Process();
 	int key = ApplicationMain::GetInstance()->GetKey();  //ApplicatonBaseのメンバ変数_gKey
 	int trg = ApplicationMain::GetInstance()->GetTrg();  //押した瞬間しか反応しないキー
 
@@ -37,9 +30,16 @@ bool ModeTitle::Process() {
 }
 
 bool ModeTitle::Render() {
-	base::Render();
+	ModeBase::Render();
 
 	DrawGraph(0, 0, _cg, TRUE);
+
+	return true;
+}
+
+bool ModeTitle::Terminate() {
+	// _cg を解放しないといけないけど、AMLibは個別解放できない・・
+	ModeBase::Terminate();
 
 	return true;
 }

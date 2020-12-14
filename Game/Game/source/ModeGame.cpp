@@ -3,6 +3,8 @@
 試し
 モデル表示＆モーション
 
+組み合わせて表示モーションOK
+
 */
 
 #include "AppFrame.h"
@@ -11,11 +13,12 @@
 
 bool ModeGame::Initialize() {
 
-	if (!base::Initialize()) {
+	if (!ModeBase::Initialize()) {
 		return false; 
 	}
 
 	_cg = MV1LoadModel("model/rori.pmx");
+	_cg2 = MV1LoadModel("model/tue/tue.pmx");
 
 	//奥行0.1～1000までをカメラの描画範囲とする(カメラの初期位置)
 	SetCameraNearFar(0.1f, 800.0f);
@@ -24,21 +27,19 @@ bool ModeGame::Initialize() {
 	SetCameraPositionAndTarget_UpVecY(VGet(0, 10, -20), VGet(0.0f, 10.0f, 0.0f));
 
 	_attachIndex = MV1AttachAnim(_cg, 0, -1, FALSE);
+	_attachIndex2 = MV1AttachAnim(_cg2, 2, -1, FALSE);
 
 	_totalTime = MV1GetAttachAnimTotalTime(_cg, _attachIndex);
+	_totalTime2 = MV1GetAttachAnimTotalTime(_cg2, _attachIndex2);
 
 	_playTime = 0.0f;
+	_playTime2 = 0.0f;
 
-	return true;
-}
-
-bool ModeGame::Terminate() {
-	base::Terminate();
 	return true;
 }
 
 bool ModeGame::Process() {
-	base::Process();
+	ModeBase::Process();
 
 	int key = ApplicationMain::GetInstance()->GetKey();
 
@@ -49,24 +50,40 @@ bool ModeGame::Process() {
 	if (key & PAD_INPUT_RIGHT) {
 		_x += 8;
 		// 再生時間を進める
-		_playTime += 0.2f;
+		_playTime += 0.5f;
+		_playTime2 += 3.0f;
 
 		// 再生時間がアニメーションの総再生時間に達したら再生時間を０に戻す
 		if (_playTime >= _totalTime) {
 			_playTime = 0.0f;
 		}
+		// 再生時間がアニメーションの総再生時間に達したら再生時間を０に戻す
+		if (_playTime2 >= _totalTime2) {
+			_playTime2 = 0.0f;
+		}
 		// 再生時間をセットする
 		MV1SetAttachAnimTime(_cg, _attachIndex, _playTime);
+		// 再生時間をセットする
+		MV1SetAttachAnimTime(_cg2, _attachIndex2, _playTime2);
 	}
 
 	return true;
 }
 
 bool ModeGame::Render() {
-	base::Render();
+	ModeBase::Render();
 
 	MV1DrawModel(_cg);
+	MV1DrawModel(_cg2);
 
+	DrawFormatString(500, 500, GetColor(255, 0, 0),"%lf:%lf",_playTime,_totalTime );
+	DrawFormatString(500, 700, GetColor(255, 0, 0), "%lf:%lf", _playTime2, _totalTime2);
+
+	return true;
+}
+
+bool ModeGame::Terminate() {
+	ModeBase::Terminate();
 	return true;
 }
 

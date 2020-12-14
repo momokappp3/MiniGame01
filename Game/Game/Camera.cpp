@@ -16,13 +16,6 @@ Camera::Camera() {  //0‚ğ“ü‚ê‚é
 Camera::~Camera() {
 }
 
-bool Camera::SetPosition(float x, float y, float z) {
-
-	_vPos = VGet(x, y, z);
-
-	return true;
-}
-
 void Camera::Process() {
 
 	// Šp“x•ÏX

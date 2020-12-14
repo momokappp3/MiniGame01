@@ -12,11 +12,20 @@ public:
 	Camera();
 	virtual ~Camera();
 
-	bool SetPosition(float x, float y, float z);
-	bool SetTarget(float x, float y, float z);
-	bool SetNearFar();
+	void SetPosition(float x, float y, float z) {
+		_vPos = VGet(x, y, z);
+	}
+	void SetTarget(float x, float y, float z) {
+		_vTarget = VGet(x, y, z);
+	}
+
+	void SetNearFar(float cNear, float cFar) {
+		_clipNear = cNear;
+		_clipFar = cFar;
+	}
+
 	void Process();
-	void Render();
+	void Render();  //debugéû
 
 	//DxlibÇÃç\ë¢ëÃ float float float
 	VECTOR	_vPos;					// à íu

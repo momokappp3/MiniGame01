@@ -1,10 +1,7 @@
 #include "appframe.h"
 
 class ModeGame : public ModeBase{
-	typedef ModeBase base;
 public:
-	//ModeGame();
-	//~
 	virtual bool Initialize();
 	virtual bool Terminate();
 	virtual bool Process();
@@ -13,17 +10,18 @@ public:
 protected:
 
 	int _cg;
+	int _cg2;
 	int _back;
 	int _x, _y;
 
 	float _near;
 	float _far;
 
-
-	//////////
 	int _attachIndex;
+	int _attachIndex2;
 	float _totalTime;
+	float _totalTime2;
 	float _playTime;
-
+	float _playTime2;
 
 }; 
