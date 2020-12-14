@@ -4,8 +4,7 @@
 #include "ModeBase.h"
 
 class	ModeServer{
-
-	typedef	std::list<ModeBase*>		lstModeBase;
+	typedef	std::list<ModeBase*> lstModeBase;
 public:
 	ModeServer();
 	virtual	~ModeServer();

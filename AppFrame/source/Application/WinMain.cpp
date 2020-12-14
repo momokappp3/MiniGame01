@@ -3,8 +3,11 @@
 
 int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow) {
 
-	ApplicationBase *appBase = ApplicationBase::GetInstance();
-	if (!appBase) { return 0; }
+	ApplicationBase *appBase = ApplicationBase::GetInstance();  //¶ƒ|ƒCƒ“ƒ^
+
+	if (!appBase) {
+		return 0;
+	}
 
 	if (!appBase->Initialize(hInstance)) {
 		return 0;
@@ -29,5 +32,6 @@ int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,i
 	}
 
 	appBase->Terminate();
+
 	return 0;
 }

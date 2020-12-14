@@ -1,8 +1,6 @@
 #include "appframe.h"
 
 class ApplicationMain : public ApplicationBase {
-	//typedef ApplicationBase base;  //c‚Ì‚â‚è•û@–¼‘O‚ğ‚Â‚¯‚Ä‚¢‚é
-	using base = ApplicationBase;  //c++
 public:
 	bool Initialize(HINSTANCE hInstance) override;
 	bool Terminate() override;

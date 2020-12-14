@@ -4,8 +4,7 @@
 #include <time.h>
 #include "../Mode//ModeServer.h"
 
-class ApplicationBase
-{
+class ApplicationBase{
 public:
 	ApplicationBase();
 	virtual ~ApplicationBase();

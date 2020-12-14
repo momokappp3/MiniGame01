@@ -1,4 +1,8 @@
+/*
 
+ƒ‚[ƒh‚Ì“o˜^
+
+*/
 #include "AppFrame.h"
 #include "ApplicationMain.h"
 #include "ModeTitle.h"
@@ -7,7 +11,7 @@
 ApplicationMain	g_oApplicationMain;
 
 bool ApplicationMain::Initialize(HINSTANCE hInstance) {
-	if (!base::Initialize(hInstance)) { return false; }
+	if (!ApplicationBase::Initialize(hInstance)) { return false; }
 
 	// ƒ‚[ƒh‚Ì“o˜^
 	ModeServer::GetInstance()->Add(new ModeTitle(), 1, "title");
@@ -16,23 +20,23 @@ bool ApplicationMain::Initialize(HINSTANCE hInstance) {
 }
 
 bool ApplicationMain::Terminate() {
-	base::Terminate();
+	ApplicationBase::Terminate();
 	return true;
 }
 
 
 bool ApplicationMain::Input() {
-	base::Input();
+	ApplicationBase::Input();
 	return true;
 }
 
 bool ApplicationMain::Process() {
-	base::Process();
+	ApplicationBase::Process();
 	return true;
 }
 
 bool ApplicationMain::Render() {
-	base::Render();
+	ApplicationBase::Render();
 	return true;
 }
 
