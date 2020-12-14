@@ -1,9 +1,10 @@
 #include "appframe.h"
 
-class ModeGame : public ModeBase
-{
+class ModeGame : public ModeBase{
 	typedef ModeBase base;
 public:
+	//ModeGame();
+	//~
 	virtual bool Initialize();
 	virtual bool Terminate();
 	virtual bool Process();
@@ -12,7 +13,11 @@ public:
 protected:
 
 	int _cg;
+	int _back;
 	int _x, _y;
+
+	float _near;
+	float _far;
 
 
 	//////////
