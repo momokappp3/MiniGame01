@@ -17,7 +17,7 @@ bool ModeGame::Initialize() {
 		return false; 
 	}
 
-	_cg = MV1LoadModel("model/rori.pmx");
+	_cg = MV1LoadModel("model/otoko/otoko.pmx");
 	_cg2 = MV1LoadModel("model/tue/tue.pmx");
 
 	//奥行0.1～1000までをカメラの描画範囲とする(カメラの初期位置)
@@ -26,8 +26,8 @@ bool ModeGame::Initialize() {
 	//(0,10,-20)の視点から(0,10,0)のターゲットを見る角度にカメラを設置
 	SetCameraPositionAndTarget_UpVecY(VGet(0, 10, -20), VGet(0.0f, 10.0f, 0.0f));
 
-	_attachIndex = MV1AttachAnim(_cg, 0, -1, FALSE);
-	_attachIndex2 = MV1AttachAnim(_cg2, 2, -1, FALSE);
+	_attachIndex = MV1AttachAnim(_cg, 1, -1, FALSE);
+	_attachIndex2 = MV1AttachAnim(_cg2, 1, -1, FALSE);
 
 	_totalTime = MV1GetAttachAnimTotalTime(_cg, _attachIndex);
 	_totalTime2 = MV1GetAttachAnimTotalTime(_cg2, _attachIndex2);
@@ -51,7 +51,7 @@ bool ModeGame::Process() {
 		_x += 8;
 		// 再生時間を進める
 		_playTime += 0.5f;
-		_playTime2 += 3.0f;
+		_playTime2 += 0.5f;
 
 		// 再生時間がアニメーションの総再生時間に達したら再生時間を０に戻す
 		if (_playTime >= _totalTime) {
