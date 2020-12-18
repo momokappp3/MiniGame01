@@ -4,7 +4,7 @@ Action3DGame::Action3DGame() {
 
 	_pCamera = nullptr;
 	_pModel = nullptr;
-	_pAnimation = nullptr;
+	//_pAnimation = nullptr;
 }
 
 Action3DGame::~Action3DGame() {

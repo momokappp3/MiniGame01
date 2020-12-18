@@ -30,6 +30,12 @@
     <ClCompile Include="Twen.cpp">
       <Filter>momoka</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectBase.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectServer.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Application\ApplicationBase.h">
@@ -53,6 +59,12 @@
     </ClInclude>
     <ClInclude Include="Types.h">
       <Filter>momoka</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectBase.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectServer.h">
+      <Filter>Application</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

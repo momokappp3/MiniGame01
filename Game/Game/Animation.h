@@ -1,4 +1,6 @@
 #pragma once
+/*
+
 #include "Model.h"
 
 class Animation : public Model {
@@ -29,3 +31,5 @@ private:
 	float _playTime;
 
 };
+
+*/

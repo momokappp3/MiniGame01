@@ -19,6 +19,6 @@ private:
 
 	std::unique_ptr<Camera> _pCamera;
 	std::unique_ptr<Model> _pModel;
-	std::unique_ptr<Animation> _pAnimation;
+	//std::unique_ptr<Animation> _pAnimation;
 
 };

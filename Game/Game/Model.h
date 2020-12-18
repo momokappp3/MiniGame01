@@ -7,34 +7,25 @@
 派生クラスにアニメーションとコリジョンクラス
 
 */
-#include"../../AppFrame/source/appframe.h"
-#include <List>
+#include "../../AppFrame/ObjectBase.h"
+#include "Transform.h"
 
-class Model {
+class Model : public ObjectBase {
 public:
 	Model();
 	virtual ~Model();
 
-	enum class KIND {
-		Player,
-		Tue,
-		Stage
-	};
+	bool LoadModel(const TCHAR* fileName);
 
-	virtual bool Initialize();
-	virtual void Process();
-	virtual void Render();
+	void Process() override;
+	void Render() override;
 
-	int GetHandle(KIND kind) {
-		//return _lHandle;
+	Transform GetTransform() const {
+		return _transform;
 	}
 
 private:
+	Transform _transform;
 
-	VECTOR _vPosition;  //場所
-	VECTOR _vDirection;  //向き
-
-
-	std::list<int> _lHandle;
-
+	int _handle;
 };

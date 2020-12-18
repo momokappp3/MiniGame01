@@ -159,6 +159,7 @@
     <ClCompile Include="source\ApplicationMain.cpp" />
     <ClCompile Include="source\ModeGame.cpp" />
     <ClCompile Include="source\ModeTitle.cpp" />
+    <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action3DGame.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="source\ApplicationMain.h" />
     <ClInclude Include="source\ModeGame.h" />
     <ClInclude Include="source\ModeTitle.h" />
+    <ClInclude Include="Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

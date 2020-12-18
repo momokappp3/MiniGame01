@@ -1,3 +1,5 @@
+/*
+
 #include "Animation.h"
 
 Animation::Animation() {
@@ -72,3 +74,4 @@ int Animation::Atachi(int num) {
 
 	return MV1AttachAnim(_handle, num, -1, FALSE);
 }
+*/
