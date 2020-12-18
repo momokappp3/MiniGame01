@@ -1,7 +1,9 @@
 #pragma once
 #include "../../AppFrame/source/appframe.h"
-#include "Camera.h"
 #include <memory>
+#include "Camera.h"
+#include "Model.h"
+#include "Animation.h"
 
 class Action3DGame : public ModeBase {
 public:
@@ -13,11 +15,10 @@ public:
 	virtual bool Process();
 	virtual bool Render();
 
-protected:
-	int _pmxModelHandle;
-
 private:
 
 	std::unique_ptr<Camera> _pCamera;
+	std::unique_ptr<Model> _pModel;
+	std::unique_ptr<Animation> _pAnimation;
 
 };

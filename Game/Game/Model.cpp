@@ -1,0 +1,22 @@
+#include "Model.h"
+
+Model::Model() {
+
+}
+
+Model::~Model() {
+}
+
+bool Model::Initialize() {
+	/*
+	ÉÇÉfÉãÇÃì«Ç›çûÇ›
+	*/
+}
+
+void Model::Process() {
+
+}
+
+void Model::Render() {
+
+}

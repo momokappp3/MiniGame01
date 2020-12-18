@@ -1,15 +1,22 @@
 #include "Action3DGame.h"
 
 Action3DGame::Action3DGame() {
-	_pmxModelHandle = -1;
 
 	_pCamera = nullptr;
+	_pModel = nullptr;
+	_pAnimation = nullptr;
 }
 
 Action3DGame::~Action3DGame() {
 }
 
 bool Action3DGame::Initialize() {
+
+	/*
+	Å‰‚Ìó‘Ô‚Ì‰Šú‰»
+	*/
+
+
 
 	if (!ModeBase::Initialize()) {
 		return false;
@@ -22,16 +29,21 @@ bool Action3DGame::Initialize() {
 	_pCamera->SetTarget(0.0f, 10.0f, 0.0f);
 	_pCamera->SetNearFar(0.1f, 800.0f);
 
-	//_attachIndex = MV1AttachAnim(_cg, 0, -1, FALSE);
-
-	//_totalTime = MV1GetAttachAnimTotalTime(_cg, _attachIndex);
-
-	//_playTime = 0.0f;
 
 	return true;
 }
 
 bool Action3DGame::Process() {
+
+	/*
+	
+	ˆÚ“®‚Ìˆ—‚È‚Ç
+	*/
+
+
+
+
+
 	return true;
 }
 

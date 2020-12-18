@@ -8,24 +8,33 @@
 
 */
 #include"../../AppFrame/source/appframe.h"
+#include <List>
 
 class Model {
 public:
 	Model();
 	virtual ~Model();
 
-	enum class Kind {
+	enum class KIND {
 		Player,
 		Tue,
 		Stage
 	};
 
+	virtual bool Initialize();
 	virtual void Process();
 	virtual void Render();
+
+	int GetHandle(KIND kind) {
+		//return _lHandle;
+	}
 
 private:
 
 	VECTOR _vPosition;  //êŠ
 	VECTOR _vDirection;  //Œü‚«
+
+
+	std::list<int> _lHandle;
 
 };
