@@ -62,6 +62,7 @@ void Camera::Render() {
 
 	//ƒJƒƒ‰•\¦
 
+	/*
 	int x = 0, y = 0, size = 16;
 
 	SetFontSize(size);
@@ -76,6 +77,8 @@ void Camera::Render() {
 	float deg = RAD2DEG(rad);
 
 	DrawFormatString(x, y, GetColor(255, 0, 0), "  len = %5.2f, rad = %5.2f, deg = %5.2f", length, rad, deg); y += size;
+	*/
+
 }
 
 

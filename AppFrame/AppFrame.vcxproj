@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Effect3D.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="ObjectServer.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Twen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Effect3D.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="ObjectServer.h" />

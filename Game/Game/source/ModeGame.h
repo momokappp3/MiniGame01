@@ -1,4 +1,7 @@
 #include "appframe.h"
+#include "../Camera.h"
+#include "../../../AppFrame/Effect3D.h"
+#include <memory>
 
 class ModeGame : public ModeBase{
 public:
@@ -8,6 +11,9 @@ public:
 	virtual bool Render();
 
 protected:
+
+	std::unique_ptr<Camera> _pCamera;
+	std::unique_ptr<Effect3D> _pEffect3D;
 
 	int _cg;
 	int _cg2;

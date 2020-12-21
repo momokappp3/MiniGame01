@@ -36,6 +36,9 @@
     <ClCompile Include="ObjectServer.cpp">
       <Filter>Application</Filter>
     </ClCompile>
+    <ClCompile Include="Effect3D.cpp">
+      <Filter>momoka</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Application\ApplicationBase.h">
@@ -65,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="ObjectServer.h">
       <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect3D.h">
+      <Filter>momoka</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
