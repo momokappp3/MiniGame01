@@ -2,6 +2,7 @@
 #include "ApplicationMain.h"
 #include "ModeTitle.h"
 #include "ModeGame.h"
+#include "../Action3DGame.h"
 #include "../../../AppFrame/Fade.h"
 
 bool ModeTitle::Initialize() {
@@ -23,7 +24,8 @@ bool ModeTitle::Process() {
 		Fade::Reset();
 		Fade::Start();
 		ModeServer::GetInstance()->Del(this);  // ‚±‚Ìƒ‚[ƒh‚ğíœ—\–ñ
-		ModeServer::GetInstance()->Add(new ModeGame(), 1, "game");  // Ÿ‚Ìƒ‚[ƒh‚ğ“o˜^
+		//ModeServer::GetInstance()->Add(new ModeGame(), 1, "game");  // Ÿ‚Ìƒ‚[ƒh‚ğ“o˜^
+		ModeServer::GetInstance()->Add(new Action3DGame(), 1, "game");  // Ÿ‚Ìƒ‚[ƒh‚ğ“o˜^
 	}
 
 	return true;

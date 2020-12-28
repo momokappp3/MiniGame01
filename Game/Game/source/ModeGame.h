@@ -1,3 +1,5 @@
+/*
+
 #include "appframe.h"
 #include "../Camera.h"
 #include "../../../AppFrame/Effect3D.h"
@@ -31,3 +33,5 @@ protected:
 	float _playTime2;
 
 }; 
+
+*/

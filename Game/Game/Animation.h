@@ -1,5 +1,5 @@
 #pragma once
-/*
+
 
 #include "Model.h"
 
@@ -31,5 +31,3 @@ private:
 	float _playTime;
 
 };
-
-*/

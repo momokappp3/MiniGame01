@@ -20,7 +20,7 @@ public:
 	void Process() override;
 	void Render() override;
 
-	Transform GetTransform() const {
+	Transform& GetTransform() {
 		return _transform;
 	}
 

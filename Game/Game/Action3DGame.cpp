@@ -24,11 +24,13 @@ bool Action3DGame::Initialize() {
 
 	//ƒƒ‚ƒŠ‚ÌŠ—LŒ ‚ğˆÏ‚Ë‚é‚É‚Í.reset
 	_pCamera.reset(new Camera);
+	_pModel.reset(new Model);
 
 	_pCamera->SetPosition(0.0f,10.0f,-20.0f);
 	_pCamera->SetTarget(0.0f, 10.0f, 0.0f);
 	_pCamera->SetNearFar(0.1f, 800.0f);
 
+	_pModel->LoadModel("model/otoko/otoko.pmx");
 
 	return true;
 }
@@ -40,14 +42,28 @@ bool Action3DGame::Process() {
 	ˆÚ“®‚Ìˆ—‚È‚Ç
 	*/
 
+	if (CheckHitKey(KEY_INPUT_A)) {
 
+		//ƒ‚ƒfƒ‹‚É‘Î‚µ‚ÄŠp“x‚ğ‚Â‚¯‘«‚¹‚é
+		_pModel->GetTransform().AddRotateY(5.0f);
+	}
 
+	if (CheckHitKey(KEY_INPUT_S)) {
 
+		//ƒ‚ƒfƒ‹‚É‘Î‚µ‚ÄŠp“x‚ğ‚Â‚¯‘«‚¹‚é
+		_pModel->GetTransform().AddRotateY(-5.0f);
+	}
+
+	_pModel->Process();
+	_pCamera->Process();
 
 	return true;
 }
 
 bool Action3DGame::Render() {
+
+	_pCamera->Render();
+	_pModel->Render();
 	return true;
 }
 

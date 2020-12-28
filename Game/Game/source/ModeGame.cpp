@@ -7,6 +7,7 @@
 
 */
 
+/*
 #include "AppFrame.h"
 #include "ApplicationMain.h"
 #include "ModeGame.h"
@@ -62,6 +63,7 @@ bool ModeGame::Process() {
 	ƒAƒjƒ
 	=======================================*/
 
+/*
 	if (key & PAD_INPUT_A) {
 		_x += 8;
 		// Ä¶ŠÔ‚ği‚ß‚é
@@ -120,3 +122,4 @@ bool ModeGame::Terminate() {
 	return true;
 }
 
+*/

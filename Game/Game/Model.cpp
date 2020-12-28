@@ -9,12 +9,14 @@ Model::~Model() {
 }
 
 bool Model::LoadModel(const TCHAR* fileName) {
+
 	_handle = ResourceServer3D::MV1LoadModel(fileName);
 
 	return _handle != -1;
 }
 
 void Model::Process() {
+
 	if (_handle == -1) {
 		return;
 	}
@@ -25,6 +27,7 @@ void Model::Process() {
 }
 
 void Model::Render() {
+
 	if (_handle == -1) {
 		return;
 	}
