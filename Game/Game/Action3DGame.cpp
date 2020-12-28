@@ -30,7 +30,7 @@ bool Action3DGame::Initialize() {
 	_pCamera->SetTarget(0.0f, 10.0f, 0.0f);
 	_pCamera->SetNearFar(0.1f, 800.0f);
 
-	_pModel->LoadModel("model/otoko/otoko.pmx");
+	_pModel->Load("model/otoko/otoko.pmx");
 
 	return true;
 }

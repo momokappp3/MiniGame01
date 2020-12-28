@@ -8,7 +8,7 @@ Model::Model() : ObjectBase() {
 Model::~Model() {
 }
 
-bool Model::LoadModel(const TCHAR* fileName) {
+bool Model::Load(const TCHAR* fileName) {
 
 	_handle = ResourceServer3D::MV1LoadModel(fileName);
 

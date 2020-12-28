@@ -15,7 +15,7 @@ public:
 	Model();
 	virtual ~Model();
 
-	bool LoadModel(const TCHAR* fileName);
+	virtual bool Load(const TCHAR* fileName);
 
 	void Process() override;
 	void Render() override;
@@ -24,7 +24,7 @@ public:
 		return _transform;
 	}
 
-private:
+protected:
 	Transform _transform;
 
 	int _handle;
