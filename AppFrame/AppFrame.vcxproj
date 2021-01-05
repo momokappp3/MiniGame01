@@ -157,6 +157,8 @@
   <ItemGroup>
     <ClCompile Include="Effect3D.cpp" />
     <ClCompile Include="Fade.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="MouseInput.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="ObjectServer.cpp" />
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
@@ -168,6 +170,8 @@
   <ItemGroup>
     <ClInclude Include="Effect3D.h" />
     <ClInclude Include="Fade.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="MouseInput.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="ObjectServer.h" />
     <ClInclude Include="source\appframe.h" />

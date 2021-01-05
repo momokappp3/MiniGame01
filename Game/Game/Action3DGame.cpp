@@ -4,6 +4,8 @@ Action3DGame::Action3DGame() {
 
 	_pCamera = nullptr;
 	_pModel = nullptr;
+	_pAnimationBase = nullptr;
+	_pInput = nullptr;
 	//_pAnimation = nullptr;
 }
 
@@ -12,12 +14,6 @@ Action3DGame::~Action3DGame() {
 
 bool Action3DGame::Initialize() {
 
-	/*
-	Å‰‚Ìó‘Ô‚Ì‰Šú‰»
-	*/
-
-
-
 	if (!ModeBase::Initialize()) {
 		return false;
 	}
@@ -25,37 +21,48 @@ bool Action3DGame::Initialize() {
 	//ƒƒ‚ƒŠ‚ÌŠ—LŒ ‚ğˆÏ‚Ë‚é‚É‚Í.reset
 	_pCamera.reset(new Camera);
 	_pModel.reset(new Model);
+	_pAnimationBase.reset(new AnimationBase);
+	_pInput.reset(new Input);
 
 	_pCamera->SetPosition(0.0f,10.0f,-20.0f);
 	_pCamera->SetTarget(0.0f, 10.0f, 0.0f);
 	_pCamera->SetNearFar(0.1f, 800.0f);
 
 	_pModel->Load("model/otoko/otoko.pmx");
+	_pAnimationBase->Load("model/otoko/otoko.pmx");
 
 	return true;
 }
 
 bool Action3DGame::Process() {
-
-	/*
 	
-	ˆÚ“®‚Ìˆ—‚È‚Ç
-	*/
-
-	if (CheckHitKey(KEY_INPUT_A)) {
-
-		//ƒ‚ƒfƒ‹‚É‘Î‚µ‚ÄŠp“x‚ğ‚Â‚¯‘«‚¹‚é
-		_pModel->GetTransform().AddRotateY(5.0f);
+	if (_pInput != nullptr) {
+		_pInput->Process();
 	}
-
-	if (CheckHitKey(KEY_INPUT_S)) {
-
-		//ƒ‚ƒfƒ‹‚É‘Î‚µ‚ÄŠp“x‚ğ‚Â‚¯‘«‚¹‚é
-		_pModel->GetTransform().AddRotateY(-5.0f);
-	}
-
 	_pModel->Process();
+	_pAnimationBase->Process();
 	_pCamera->Process();
+
+	if (_pInput->_key[(KEY_INPUT_A)] == 1) {
+
+		//ƒ‚ƒfƒ‹‚É‘Î‚µ‚ÄŠp“x‚ğ‚Â‚¯‘«‚¹‚é
+		//_pModel->GetTransform().AddRotateY(5.0f);
+		_pAnimationBase->GetTransform().AddRotateY(5.0f);
+	}
+
+	if (_pInput->_key[(KEY_INPUT_S)] == 1) {
+
+		//ƒ‚ƒfƒ‹‚É‘Î‚µ‚ÄŠp“x‚ğ‚Â‚¯‘«‚¹‚é
+		//_pModel->GetTransform().AddRotateY(-5.0f);
+	}
+
+
+
+	if (_pInput->_key[(KEY_INPUT_D)] == 1) {
+
+		_pAnimationBase->Play(0);
+
+	}
 
 	return true;
 }
@@ -64,6 +71,7 @@ bool Action3DGame::Render() {
 
 	_pCamera->Render();
 	_pModel->Render();
+	_pAnimationBase->Render();
 	return true;
 }
 

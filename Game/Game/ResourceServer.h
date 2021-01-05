@@ -8,7 +8,7 @@
  LoadGraphをmapを使った配列に例 _mapGraph[/png/player.png]の中身識別番号
  関数のstatic定義はいらない
 */
-class ResourceServer3D {
+class ResourceServer {
 public:
 	static void	Init();   //staticだとインスタンスなしで呼べる
 	static void	Release();
@@ -16,5 +16,11 @@ public:
 
 	static int MV1LoadModel(const TCHAR* FileName);
 	static bool DeleteModel(int handle);
+
+
+	//2D
+
+	static int LoadGraph(const TCHAR* FileName);
+	static bool DeleteGraph(int handle);
 
 };

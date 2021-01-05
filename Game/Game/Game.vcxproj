@@ -72,22 +72,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\DxLib_VC\DxLib_VC\d;..\..\AppFrame\source;$(IncludePath)</IncludePath>
+    <IncludePath>C:\DxLib_VC\DxLib_VC\d;../../\AppFrame\source;$(IncludePath)</IncludePath>
     <LibraryPath>C:\DxLib_VC\DxLib_VC\d;$(SolutionDir)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\DxLib_VC\DxLib_VC\d;..\..\AppFrame\source;$(IncludePath)</IncludePath>
+    <IncludePath>C:\DxLib_VC\DxLib_VC\d;../../\AppFrame\source;$(IncludePath)</IncludePath>
     <LibraryPath>C:\DxLib_VC\DxLib_VC\d;$(SolutionDir)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\DxLib_VC\DxLib_VC\d;..\..\AppFrame\source;$(IncludePath)</IncludePath>
+    <IncludePath>C:\DxLib_VC\DxLib_VC\d;../../\AppFrame\source;$(IncludePath)</IncludePath>
     <LibraryPath>C:\DxLib_VC\DxLib_VC\d;$(SolutionDir)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\DxLib_VC\DxLib_VC\d;..\..\AppFrame\source;$(IncludePath)</IncludePath>
+    <IncludePath>C:\DxLib_VC\DxLib_VC\d;../../\AppFrame\source;$(IncludePath)</IncludePath>
     <LibraryPath>C:\DxLib_VC\DxLib_VC\d;$(SolutionDir)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -154,9 +154,13 @@
     <ClCompile Include="Action3DGame.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationBase.cpp" />
+    <ClCompile Include="AnimationOtoko.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="GalGame.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ResourceServer3D.cpp" />
+    <ClCompile Include="ModeMenu.cpp" />
+    <ClCompile Include="ModeTitleMenu.cpp" />
+    <ClCompile Include="ResourceServer.cpp" />
     <ClCompile Include="source\ApplicationMain.cpp" />
     <ClCompile Include="source\ModeGame.cpp" />
     <ClCompile Include="source\ModeTitle.cpp" />
@@ -166,12 +170,16 @@
     <ClInclude Include="Action3DGame.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationBase.h" />
+    <ClInclude Include="AnimationOtoko.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="GalGame.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="ResourceServer3D.h" />
+    <ClInclude Include="ModeMenu.h" />
+    <ClInclude Include="ResourceServer.h" />
     <ClInclude Include="source\ApplicationMain.h" />
     <ClInclude Include="source\ModeGame.h" />
     <ClInclude Include="source\ModeTitle.h" />
+    <ClInclude Include="ModeTitleMenu.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

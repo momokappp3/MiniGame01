@@ -1,4 +1,7 @@
+#pragma once
 #include "appframe.h"
+#include "../../../AppFrame/Input.h"
+#include <memory>
 
 class ModeTitle : public ModeBase{
 public:
@@ -7,6 +10,10 @@ public:
 	virtual bool Process();
 	virtual bool Render();
 
-protected:
-	int _cg;
+private:
+
+	std::unique_ptr<Input> _pInput;
+
+	int _backHandle;
+	int _key;
 }; 

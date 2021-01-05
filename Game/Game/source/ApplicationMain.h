@@ -1,4 +1,6 @@
+#pragma once
 #include "appframe.h"
+#include "../AnimationBase.h"
 
 class ApplicationMain : public ApplicationBase {
 public:
@@ -15,8 +17,8 @@ public:
 		return false;
 #endif
 	}
-	int DispSizeW() override { return 1280; }
-	int DispSizeH() override { return 720; }
+	int DispSizeW() override { return 1920; }
+	int DispSizeH() override { return 1280; }
 
 protected:
 }; 

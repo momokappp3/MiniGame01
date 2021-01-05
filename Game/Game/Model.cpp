@@ -1,5 +1,5 @@
 #include "Model.h"
-#include"ResourceServer3D.h"
+#include"ResourceServer.h"
 
 Model::Model() : ObjectBase() {
 	_handle = -1;
@@ -10,7 +10,7 @@ Model::~Model() {
 
 bool Model::Load(const TCHAR* fileName) {
 
-	_handle = ResourceServer3D::MV1LoadModel(fileName);
+	_handle = ResourceServer::MV1LoadModel(fileName);
 
 	return _handle != -1;
 }

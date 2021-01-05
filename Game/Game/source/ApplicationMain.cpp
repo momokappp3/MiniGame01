@@ -6,7 +6,7 @@
 #include "AppFrame.h"
 #include "ApplicationMain.h"
 #include "ModeTitle.h"
-#include "../Action3DGame.h"
+//#include "../Action3DGame.h"
 
 // ŽÀ‘Ì
 ApplicationMain	g_oApplicationMain;
