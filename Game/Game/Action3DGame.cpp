@@ -20,7 +20,7 @@ bool Action3DGame::Initialize() {
 
 	//ƒƒ‚ƒŠ‚ÌŠ—LŒ ‚ğˆÏ‚Ë‚é‚É‚Í.reset
 	_pCamera.reset(new Camera);
-	_pModel.reset(new Model);
+	//_pModel.reset(new Model);
 	_pAnimationBase.reset(new AnimationBase);
 	_pInput.reset(new Input);
 
@@ -28,7 +28,7 @@ bool Action3DGame::Initialize() {
 	_pCamera->SetTarget(0.0f, 10.0f, 0.0f);
 	_pCamera->SetNearFar(0.1f, 800.0f);
 
-	_pModel->Load("model/otoko/otoko.pmx");
+	//_pModel->Load("model/otoko/otoko.pmx");
 	_pAnimationBase->Load("model/otoko/otoko.pmx");
 
 	return true;
@@ -39,7 +39,7 @@ bool Action3DGame::Process() {
 	if (_pInput != nullptr) {
 		_pInput->Process();
 	}
-	_pModel->Process();
+	//_pModel->Process();
 	_pAnimationBase->Process();
 	_pCamera->Process();
 
@@ -60,7 +60,7 @@ bool Action3DGame::Process() {
 
 	if (_pInput->_key[(KEY_INPUT_D)] == 1) {
 
-		_pAnimationBase->Play(0);
+		_pAnimationBase->Play(true, 0, 0.5f);
 
 	}
 
@@ -70,7 +70,7 @@ bool Action3DGame::Process() {
 bool Action3DGame::Render() {
 
 	_pCamera->Render();
-	_pModel->Render();
+	//_pModel->Render();
 	_pAnimationBase->Render();
 	return true;
 }

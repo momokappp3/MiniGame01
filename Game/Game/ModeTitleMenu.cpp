@@ -1,10 +1,11 @@
+//#include "ModeGame.h"
 #include "AppFrame.h"
 #include "source/ApplicationMain.h"
 #include "ModeTitleMenu.h"
-//#include "ModeGame.h"
 #include "Action3DGame.h"
 #include "ResourceServer.h"
 #include "GalGame.h"
+#include "source/ModeGame.h"
 
 ModeTitleMenu::ModeTitleMenu() {
 
@@ -18,7 +19,6 @@ ModeTitleMenu::ModeTitleMenu() {
 
 	_backHandle = -1;
 	_targetHandle = -1;
-
 }
 
 ModeTitleMenu::~ModeTitleMenu() {
@@ -31,10 +31,10 @@ bool ModeTitleMenu::Initialize() {
 
 	_pInput.reset(new Input);
 
-	_menuKind = Kind::NewGame;
+	_menuKind = Kind::Max;
 
-	_x = 200;
-	_y = 600;
+	_x = 117;
+	_y = 600 - 75;
 
 	_backHandle = ResourceServer::LoadGraph(_T("res/menu.png"));
 	_targetHandle = ResourceServer::LoadGraph(_T("res/target.png"));
@@ -49,49 +49,48 @@ bool ModeTitleMenu::Process() {
 		_pInput->Process();
 	}
 
+	if (_pInput->_key[(KEY_INPUT_RETURN)] == 1) {
 
-	if (_pInput->_key[(KEY_INPUT_UP)] == 1 && _menuKind < Kind::NewGame) {
-		if (_menuKind == Kind::NewGame) {
-			int now = static_cast<int>(_menuKind);
-
-			now--;
-			_x += 50;
-
-			_menuKind = static_cast<Kind>(now);
-		}
-	}
-
-	if (_pInput->_key[(KEY_INPUT_DOWN)]&& _menuKind > Kind::End) {
-		if (_menuKind == Kind::NewGame) {
-			int now = static_cast<int>(_menuKind);
-
-			now--;
-			_x -= -50;
-
-			_menuKind = static_cast<Kind>(now);
-		}
-	}
-
-	if (_pInput->_key[(KEY_INPUT_S)] ==1) {
-		if (_menuKind == Kind::NewGame) {
+		switch (_menuKind){
+		case Kind::NewGame:
 			ModeServer::GetInstance()->Del(this);  // Ç±ÇÃÉÇÅ[ÉhÇçÌèúó\ñÒ
 			ModeServer::GetInstance()->Add(new Action3DGame(), 2, "Action3DGame");  // éüÇÃÉÇÅ[ÉhÇìoò^
-		}
+			break;
 
-		if (_menuKind == Kind::End) {
-			return false;
+		case Kind::LoadGame:
+			ModeServer::GetInstance()->Del(this);  // Ç±ÇÃÉÇÅ[ÉhÇçÌèúó\ñÒ
+			ModeServer::GetInstance()->Add(new GalGame(), 3, "GalGame");  // éüÇÃÉÇÅ[ÉhÇìoò^
+			break;
+
+		case Kind::Option:
+			ModeServer::GetInstance()->Del(this);  // Ç±ÇÃÉÇÅ[ÉhÇçÌèúó\ñÒ
+			ModeServer::GetInstance()->Add(new ModeGame(), 4, "ModeGame");  // éüÇÃÉÇÅ[ÉhÇìoò^
+			break;
+
+		case Kind::Help:
+			break;
+		case Kind::End:
+			break;
+		default:
+			break;
 		}
 	}
 
-	if (_pInput->_key[(KEY_INPUT_A)] == 1) {
-		if (_menuKind == Kind::NewGame) {
-			ModeServer::GetInstance()->Del(this);  // Ç±ÇÃÉÇÅ[ÉhÇçÌèúó\ñÒ
-			ModeServer::GetInstance()->Add(new GalGame(), 3, "GalGame");  // éüÇÃÉÇÅ[ÉhÇìoò^
-		}
+	//è„Ç…à⁄ìÆ
+	if (_pInput->_key[(KEY_INPUT_UP)] == 1 && _menuKind > Kind::NewGame) {
+		int now = static_cast<int>(_menuKind);
 
-		if (_menuKind == Kind::End) {
-			return false;
-		}
+		now--;
+		_y -= 75;
+		_menuKind = static_cast<Kind>(now);
+	}
+	//â∫Ç…à⁄ìÆ
+	if (_pInput->_key[(KEY_INPUT_DOWN)] == 1 && _menuKind < Kind::End) {
+		int now = static_cast<int>(_menuKind);
+
+		now++;
+		_y += 75;
+		_menuKind = static_cast<Kind>(now);
 	}
 
 	return true;
@@ -103,7 +102,16 @@ bool ModeTitleMenu::Render() {
 	//DrawFormatString(600, 600, GetColor(255,255,255), "%d",_menuKind);
 
 	DrawGraph(0, 0, _backHandle, TRUE);
-	DrawGraph(_x, _y, _targetHandle, TRUE);
+
+	if (_menuKind != Kind::Max) {
+		DrawGraph(_x, _y, _targetHandle, TRUE);
+	}
+
+	//éÌóﬁï\é¶
+	//============================================
+	int now = static_cast<int>(_menuKind);
+	DrawFormatString(20, 20, GetColor(255, 255, 255), "ç°ÇÃKIND%d", now);
+	_menuKind = static_cast<Kind>(now);
 
 	return true;
 }

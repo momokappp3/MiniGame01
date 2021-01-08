@@ -1,4 +1,3 @@
-/*
 
 #include "appframe.h"
 #include "../Camera.h"
@@ -34,4 +33,4 @@ protected:
 
 }; 
 
-*/
+

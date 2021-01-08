@@ -9,13 +9,12 @@ public:
 	virtual ~ModeTitleMenu();
 
 	enum class Kind {
-		NewGame = 0,
+		Max = 0,
+		NewGame, 
 		LoadGame,
-		EndGame,
 		Option,
 		Help,
-		End,
-		Max
+		End
 	};
 
 	virtual bool Initialize();

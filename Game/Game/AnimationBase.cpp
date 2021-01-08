@@ -1,12 +1,22 @@
 #include "AnimationBase.h"
 
+namespace {
+	constexpr float DEFAULT_ANIMATION_SPEED = 1.0f;
+}
+
 AnimationBase::AnimationBase() {
+
 	_animationNum = -1;
 	_playIndex = -1;
+	_playTime = 0.0f;
 
 	_blendIndex = -1;
 	_blendFrame = 0;
 	_blendCount = 0;
+	_blendTime = 0.0f;
+
+	_animationSpeed = DEFAULT_ANIMATION_SPEED;
+	_animationLoop = false;
 }
 
 AnimationBase::~AnimationBase() {
@@ -24,6 +34,8 @@ bool AnimationBase::Load(const TCHAR* fileName) {
 		return false;
 	}
 
+
+
 	for (int i = 0; i < _animationNum; i++) {
 		_mapAnimationTime.emplace(i, MV1GetAnimTotalTime(_handle, i));
 	}
@@ -33,36 +45,59 @@ bool AnimationBase::Load(const TCHAR* fileName) {
 
 void AnimationBase::Process() {
 
-	ProcessBlend();
 	Model::Process();
-}
 
-void AnimationBase::ProcessBlend() {
+	if (_playIndex >= 0) {
+		
+		if (_blendIndex >= 0 && _blendFrame > 0) {
+			float rate = static_cast<float>(_blendCount) / static_cast<float>(_blendFrame);
 
-	if (_playIndex >= 0 && _blendIndex >= 0 && _blendFrame > 0) {
-		float rate = static_cast<float>(_blendCount) / static_cast<float>(_blendFrame);
+			MV1SetAttachAnimBlendRate(_handle, _playIndex, 1.0f - rate);
+			MV1SetAttachAnimBlendRate(_handle, _blendIndex, rate);
 
-		MV1SetAttachAnimBlendRate(_handle, _playIndex, 1.0f - rate);
-		MV1SetAttachAnimBlendRate(_handle, _blendIndex, rate);
+			if (_blendCount > _blendFrame) {
+				// ブレンド前のアニメーションをデタッチ
+				Detach(_playIndex);
 
-		if (_blendCount >= _blendFrame) {
+				// ブレンドしていたアニメーションに切り替える
+				_playIndex = _blendIndex;
+				_playTime = _blendTime;
 
-			Detach(_playIndex);
+				_blendIndex = -1;
+				_blendFrame = 0;
+				_blendCount = 0;
+				_blendTime = 0.0f;
+			}
+			else {
+				_blendCount++;
 
-			_playIndex = _blendIndex;
-			_blendIndex = -1;
-			_blendFrame = 0;
-			_blendCount = 0;
+				MV1SetAttachAnimTime(_handle, _blendIndex, _blendTime);
+
+				_blendTime += _animationSpeed;
+
+				float totalTime = _mapAnimationTime[_blendIndex];
+
+				if (_blendTime > totalTime) {
+					_blendTime = _animationLoop ? 0.0f : totalTime;
+				}
+			}
 		}
-		else {
-			_blendCount++;
+
+		MV1SetAttachAnimTime(_handle, _playIndex, _playTime);
+
+		_playTime += _animationSpeed;
+
+		float totalTime = _mapAnimationTime[_playIndex];
+
+		if (_playTime > totalTime) {
+			_playTime = _animationLoop ? 0.0f : totalTime;
 		}
 	}
 }
 
-bool AnimationBase::Play(int index, int blendFrame) {
+bool AnimationBase::Play(bool loop, int index, float speed, int blendFrame) {
 
-	if (_animationNum == -1 || index < 0 || blendFrame < 0) {
+	if (_animationNum == -1 || index < 0 || speed <= 0.0f || blendFrame < 0) {
 		return false;
 	}
 
@@ -71,12 +106,15 @@ bool AnimationBase::Play(int index, int blendFrame) {
 		return false;
 	}
 
+	_animationLoop = loop;
+	_animationSpeed = speed;
+
 	if (_playIndex < 0) { // 現在再生しているアニメーションが無い
 
 		return ImmediatePlay(index);
 	}
 	else { // 再生中のアニメーションがある
-		
+
 		if (blendFrame == 0) { // ブレンドフレーム指定が 0 なら即時切り替え
 
 			Detach(_playIndex);
@@ -135,7 +173,7 @@ bool AnimationBase::Attach(int index) {
 		return false;
 	}
 
-	if (MV1AttachAnim(_handle, index) == -1) {
+	if (MV1AttachAnim(_handle, index, -1, FALSE) == -1) {
 		return false;
 	}
 
@@ -152,6 +190,7 @@ bool AnimationBase::Detach(int index) {
 }
 
 float AnimationBase::GetTime(int index) {
+
 	auto count = _mapAnimationTime.count(index);
 
 	if (count == 0) {

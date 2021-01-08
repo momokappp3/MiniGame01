@@ -11,7 +11,7 @@ public:
 	bool Load(const TCHAR* fileName) override;
 	void Process() override;
 
-	bool Play(int index, int blendFrame = 0);
+	bool Play(bool loop, int index, float speed, int blendFrame = 0);
 	void Stop();
 
 	bool Attach(int index);
@@ -19,16 +19,28 @@ public:
 
 	float GetTime(int index);
 
+	void SetAnimationSpeed(float speed) {
+		_animationSpeed = speed;
+	}
+
+	float GetAnimationSpeed() const {
+		return _animationSpeed;
+	}
+
 protected:
-	void ProcessBlend();
 	bool ImmediatePlay(int index);
 
 	int _animationNum;
 	int _playIndex;
+	float _playTime;
 
 	int _blendIndex;
 	int _blendFrame;
 	int _blendCount;
+	float _blendTime;
+
+	float _animationSpeed;
+	bool _animationLoop;
 
 	std::unordered_map<int, float> _mapAnimationTime;
 };

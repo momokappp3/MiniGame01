@@ -5,6 +5,7 @@ GalGame::GalGame() {
 	_pCamera = nullptr;
 	_pCharaModel = nullptr;
 	_pMouseInput = nullptr;
+	_pNovelBG = nullptr;
 	//_pAnimation = nullptr;
 }
 
@@ -22,6 +23,7 @@ bool GalGame::Initialize() {
 	_pCharaModel.reset(new Model);
 	_pRoomModel.reset(new Model);
 	_pMouseInput.reset(new MouseInput);
+	_pNovelBG.reset(new NovelBG);
 
 	_pCamera->SetPosition(0.0f, 10.0f, -20.0f);
 	_pCamera->SetTarget(0.0f, 10.0f, 0.0f);
@@ -51,6 +53,10 @@ bool GalGame::Process() {
 		_pCharaModel->GetTransform().AddRotateY(-5.0f);
 	}
 
+	if (CheckHitKey(KEY_INPUT_D)) {
+		_pNovelBG->SetCommentFlag(true);
+	}
+
 	_pCharaModel->Process();
 	_pCamera->Process();
 	_pRoomModel->Process();
@@ -65,6 +71,7 @@ bool GalGame::Render() {
 	_pCharaModel->Render();
 	_pRoomModel->Render();
 	_pMouseInput->Draw();
+	_pNovelBG->Draw();
 	return true;
 }
 

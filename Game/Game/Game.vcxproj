@@ -160,6 +160,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModeMenu.cpp" />
     <ClCompile Include="ModeTitleMenu.cpp" />
+    <ClCompile Include="NovelBG.cpp" />
     <ClCompile Include="ResourceServer.cpp" />
     <ClCompile Include="source\ApplicationMain.cpp" />
     <ClCompile Include="source\ModeGame.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="GalGame.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModeMenu.h" />
+    <ClInclude Include="NovelBG.h" />
     <ClInclude Include="ResourceServer.h" />
     <ClInclude Include="source\ApplicationMain.h" />
     <ClInclude Include="source\ModeGame.h" />
