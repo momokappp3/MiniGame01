@@ -15,7 +15,7 @@ public:
 	virtual ~NovelBG();
 
 	bool Initialize();
-	//void Process();
+	void Process();
 	void Draw();
 
 	void SetNovelFlag(bool flag) {

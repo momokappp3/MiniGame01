@@ -5,6 +5,7 @@
 #include "Model.h"
 #include "../../AppFrame/MouseInput.h"
 #include "NovelBG.h"
+#include "AnimationBase.h"
 
 class GalGame : public ModeBase {
 public:
@@ -23,5 +24,6 @@ private:
 	std::unique_ptr<Model> _pRoomModel;
 	std::unique_ptr<MouseInput> _pMouseInput;
 	std::unique_ptr<NovelBG> _pNovelBG;
+	std::unique_ptr<AnimationBase> _pAnimationBase;
 
 };

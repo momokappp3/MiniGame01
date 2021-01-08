@@ -28,17 +28,21 @@ bool NovelBG::Initialize() {
 	return true;
 }
 
+void NovelBG::Process() {
+
+}
+
 void NovelBG::Draw() {
 
-	if (_selectCommentHandle) {
+	if (_isSelectComment) {
 		DrawGraph(0, 0, _selectCommentHandle, TRUE);
 	}
 
-	if (_commentHandle) {
+	if (_isComment) {
 		DrawGraph(200, 700, _commentHandle, TRUE);
 	}
 
-	if (_novelHandle) {
+	if (_isNovel) {
 		DrawGraph(200, 200, _novelHandle, TRUE);
 	}
 }
