@@ -80,6 +80,7 @@ namespace {
     constexpr auto COMMAND_J = 'j';
     constexpr auto COMMAND_L = 'l';
     constexpr auto COMMAND_C = 'c';
+    constexpr auto COMMAND_N = 'n';  //追加
     constexpr auto COMMAND_I = 'i';
     constexpr auto COMMAND_D = 'd';
     constexpr auto COMMAND_E = 'e';
@@ -88,11 +89,12 @@ namespace {
     constexpr auto CURSOR_IMAGE_LABEL = "カーソル";
     constexpr auto CLICK_WAIT_IMAGE_LABEL = "クリック待ち";
 
-    constexpr auto FONT_SIZE = 24;
+    constexpr auto FONT_SIZE = 100;
 
     constexpr auto MSG_WORD_MAX = 42;
     constexpr auto MSG_STRING_MAX = MSG_WORD_MAX * 2; // 2 : MultiByte String
 
+    //メッセージ
     constexpr auto MSG_LINE_MAX = 3;
     constexpr auto MSG_LINE_WIDTH = MSG_WORD_MAX * FONT_SIZE;
     constexpr auto MSG_LINE_HEIGHT = 24;
@@ -104,6 +106,23 @@ namespace {
     constexpr auto MSG_WINDOW_CENTER_Y = 900;
     constexpr auto MSG_WINDOW_TOP = MSG_WINDOW_CENTER_Y - MSG_WINDOW_HEIGHT / 2;
     constexpr auto MSG_WINDOW_BOTTOM = MSG_WINDOW_TOP + MSG_WINDOW_HEIGHT;
+
+    //ノベル
+    constexpr auto NVL_WORD_MAX = 42;
+    constexpr auto NVL_STRING_MAX = MSG_WORD_MAX * 2; // 2 : MultiByte String
+
+    constexpr auto NVL_LINE_MAX = 3;
+    constexpr auto NVL_LINE_WIDTH = MSG_WORD_MAX * FONT_SIZE;
+    constexpr auto NVL_LINE_HEIGHT = 24;
+    constexpr auto NVL_LINE_GAP_HEIGHT = 16;
+    constexpr auto NVL_LINE_GRID_HEIGHT = NVL_LINE_HEIGHT + NVL_LINE_GAP_HEIGHT;
+
+    constexpr auto NVL_WINDOW_WIDTH = MSG_LINE_WIDTH;
+    constexpr auto NVL_WINDOW_HEIGHT = MSG_LINE_GRID_HEIGHT * MSG_LINE_MAX - MSG_LINE_GAP_HEIGHT;
+    constexpr auto NVL_WINDOW_CENTER_Y = 900;
+    constexpr auto NVL_WINDOW_TOP = MSG_WINDOW_CENTER_Y - MSG_WINDOW_HEIGHT / 2;
+    constexpr auto NVL_WINDOW_BOTTOM = MSG_WINDOW_TOP + MSG_WINDOW_HEIGHT;
+
 
     constexpr auto CLICK_WAIT_IMAGE_OFFSET_Y = 28;
 
@@ -127,6 +146,10 @@ namespace {
 
     int message_window_left = 0;
     int message_window_right = 0;
+
+    //ノベルバージョン
+    int novel_window_left = 0;
+    int novel_window_right = 0;
 
     int click_wait_x = 0;
     int click_wait_y = 0;
@@ -310,8 +333,8 @@ namespace amg
     //! @details 無理に呼び出す必要はありませんが
     //! インスタンスを再利用したい場合などに呼び出します。
     //!
-    void ScriptEngine::Destroy()
-    {
+    void ScriptEngine::Destroy(){
+
         input_manager.reset();
         input_manager = nullptr;
 
@@ -445,6 +468,11 @@ namespace amg
 
             case COMMAND_C:
                 OnCommandChoice(now_line, script);
+                break;
+                
+            case COMMAND_N:  //ノベル
+                //処理
+                OnCommandNovel(now_line, script);
                 break;
 
             case COMMAND_D:
@@ -629,6 +657,23 @@ namespace amg
 
         return true;
     }
+
+    //novelの処理(追加)
+    bool ScriptEngine::OnCommandNovel(unsigned int line, const std::vector<std::string>& scripts) {
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
 
     //!
     //! @fn bool ScriptEngine::OnCommandMessage(unsigned int line, const std::vector<std::string>& scripts)
@@ -825,6 +870,28 @@ namespace amg
 
         return true;
     }
+    //ノベルバージョン
+    bool ScriptEngine::CalculateMessageArea(const std::string& novel, Rect& area, int& right_goal) {
+
+        if (novel.empty()) {
+            return false;
+        }
+
+        const auto line_index = static_cast<int>(novel_list.size());
+        const auto novel_top = NVL_WINDOW_TOP + NVL_LINE_GRID_HEIGHT * line_index;
+        const auto novel_bottom = novel_top + NVL_LINE_HEIGHT;
+
+        area.Set(novel_window_left, novel_top, novl_window_left, novel_bottom);
+
+        const auto string_lenght = static_cast<int>(std::strlen(novel.c_str()));
+
+        right_goal = novel_window_left + ((string_lenght + 1) * (FONT_SIZE / 2));
+
+        return true;
+    }
+
+
+
 
     //!
     //! @fn bool ScriptEngine::GetLineNumber(const std::string& str, unsigned int& line) const
@@ -951,6 +1018,28 @@ namespace amg
             DxWrapper::DrawGraph(click_wait_x, click_wait_y, click_wait_image_handle, DxWrapper::TRUE);
         }
     }
+
+    //ノベルの文字列描画
+    void ScriptEngine::RenderNovel() const {
+
+        for (auto&& message : message_list) {
+            const auto area = message->GetArea();
+
+            // 表示エリアを制御して 1文字づつ描画する
+            DxWrapper::SetDrawArea(area.left, area.top, area.right, area.bottom);
+            DxWrapper::DrawString(area.left, area.top,  //456,548
+                message->GetMessage().c_str(), message_string_color);
+        }
+
+        // 表示エリアを全画面に戻す
+        DxWrapper::SetDrawArea(0, 0, screen_width, screen_height);
+
+        if (is_click_wait_visible) {
+            DxWrapper::DrawGraph(click_wait_x, click_wait_y, click_wait_image_handle, DxWrapper::TRUE);
+        }
+    }
+
+
 
     //!
     //! @fn void ScriptEngine::RenderChoice() const

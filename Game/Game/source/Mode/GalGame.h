@@ -7,6 +7,7 @@
 #include "../../AnimationBase.h"
 #include "../../SelectComment.h"
 #include "../Novel/scripts/script_engine.h"
+#include "../../SoundManager.h"
 
 class GalGame : public ModeBase {
 public:
@@ -31,6 +32,7 @@ private:
 	std::unique_ptr<AnimationBase> _pAnimationBase;
 	std::unique_ptr<SelectComment> _pSelectComment;
 	std::unique_ptr<amg::ScriptEngine> _pScriptEngin;
+	std::unique_ptr<SoundManager> _pSoundManager;
 
 	int _favor;  //çDä¥ìx
 

@@ -18,6 +18,7 @@ namespace amg{
     class CommandImage;
     class CommandChoice;
     class CommandMessage;
+    class CommandNovel;
     class CommandDraw;
 
     class ScriptEngine {
@@ -84,6 +85,7 @@ namespace amg{
         bool OnCommandLabel(unsigned int line, const std::vector<std::string>& scripts);
         bool OnCommandImage(unsigned int line, const std::vector<std::string>& scripts);
         bool OnCommandChoice(unsigned int line, const std::vector<std::string>& scripts);
+        bool OnCommandNovel(unsigned int line, const std::vector<std::string>& scripts);
         bool OnCommandMessage(unsigned int line, const std::vector<std::string>& scripts);
         bool OnCommandDraw(unsigned int line, const std::vector<std::string>& scripts);
 
@@ -91,6 +93,7 @@ namespace amg{
         void RenderImage() const;
         void RenderMessageWindow() const;
         void RenderMessage() const;
+        void RenderNovel() const;
         void RenderChoice() const;
 
         std::unique_ptr<InputManager> input_manager;
@@ -100,6 +103,7 @@ namespace amg{
         std::vector<std::unique_ptr<CommandLabel>> label_list;
         std::vector<std::unique_ptr<CommandChoice>> choice_list;
         std::vector<std::unique_ptr<CommandMessage>> message_list;
+        std::vector<std::unique_ptr<CommandNovel>> novel_list;
         std::vector<std::unique_ptr<CommandDraw>> draw_list;
 
         ScriptState state;

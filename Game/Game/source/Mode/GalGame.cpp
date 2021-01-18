@@ -9,6 +9,7 @@ GalGame::GalGame() {
 	_pAnimationBase = nullptr;
 	_pSelectComment = nullptr;
 	_pScriptEngin = nullptr;
+	_pSoundManager = nullptr;
 
 	_favor = 0;
 }
@@ -30,6 +31,7 @@ bool GalGame::Initialize() {
 	_pAnimationBase.reset(new AnimationBase);
 	_pSelectComment.reset(new SelectComment);
 	_pScriptEngin.reset(new amg::ScriptEngine);
+	_pSoundManager.reset(new SoundManager);
 
 	if (!_pSelectComment->Initialize()){
 		return false;
