@@ -1,13 +1,16 @@
-#include "GalGame.h"
+#include "../Mode/GalGame.h"
+#include <string>
 
 GalGame::GalGame() {
 
 	_pCamera = nullptr;
 	_pCharaModel = nullptr;
 	_pMouseInput = nullptr;
-	_pNovelBG = nullptr;
 	_pAnimationBase = nullptr;
-	//_pAnimation = nullptr;
+	_pSelectComment = nullptr;
+	_pScriptEngin = nullptr;
+
+	_favor = 0;
 }
 
 GalGame::~GalGame() {
@@ -24,11 +27,15 @@ bool GalGame::Initialize() {
 	//_pCharaModel.reset(new Model);
 	_pRoomModel.reset(new Model);
 	_pMouseInput.reset(new MouseInput);
-	_pNovelBG.reset(new NovelBG);
 	_pAnimationBase.reset(new AnimationBase);
+	_pSelectComment.reset(new SelectComment);
+	_pScriptEngin.reset(new amg::ScriptEngine);
 
+	if (!_pSelectComment->Initialize()){
+		return false;
+	}
 
-	if (!_pNovelBG->Initialize()) {
+	if (!_pScriptEngin->Initialize("source/excel/escape_from_amg1.json")) {
 		return false;
 	}
 
@@ -49,6 +56,8 @@ bool GalGame::Process() {
 		return false;
 	}
 
+	_favor = _pScriptEngin->GetFavor();
+
 	if (CheckHitKey(KEY_INPUT_A)) {
 
 		//モデルに対して角度をつけ足せる
@@ -63,14 +72,26 @@ bool GalGame::Process() {
 
 	if (CheckHitKey(KEY_INPUT_D)) {
 		_pAnimationBase->Play(true, 1, 5.0f);
-		_pNovelBG->SetCommentFlag(true);
 	}
+
+	if (CheckHitKey(KEY_INPUT_G)) {
+
+		//途中から開始
+		_pScriptEngin->SetState(amg::ScriptEngine::ScriptState::PARSING);
+
+	}
+
+	std::string str(_T("いいいいいいい"));
+
+	//一度変数に取ってから関数に渡す
+	_pSelectComment->SetString(str);
 
 	_pAnimationBase->Process();
 	_pCamera->Process();
 	_pRoomModel->Process();
 	_pMouseInput->Process();
-	_pNovelBG->Process();
+	_pSelectComment->Process();
+	_pScriptEngin->Update();
 
 	return true;
 }
@@ -81,11 +102,22 @@ bool GalGame::Render() {
 	_pAnimationBase->Render();
 	_pRoomModel->Render();
 	_pMouseInput->Draw();
-	_pNovelBG->Draw();
+	_pSelectComment->Draw();
+
+
+	if (_pScriptEngin->GetState()!= amg::ScriptEngine::ScriptState::END) {
+		_pScriptEngin->Render();
+	}
+
+	//debug情報
+
+	DrawFormatString(100, 900, GetColor(255, 0, 0), "好感度%d",_favor);
 
 	return true;
 }
 
 bool GalGame::Terminate() {
+
+	_pScriptEngin->Destroy();
 	return true;
 }

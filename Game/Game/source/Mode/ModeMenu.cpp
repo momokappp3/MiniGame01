@@ -3,7 +3,7 @@
 #include "AppFrame.h"
 #include "source/ApplicationMain.h"
 //#include "ApplicationGlobal.h"
-#include "ModeMenu.h"
+#include "../Mode/ModeMenu.h"
 
 
 bool ModeMenu::Initialize() {

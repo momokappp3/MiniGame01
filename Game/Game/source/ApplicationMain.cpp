@@ -5,7 +5,7 @@
 */
 #include "AppFrame.h"
 #include "ApplicationMain.h"
-#include "ModeTitle.h"
+#include "../source/Mode/ModeTitle.h"
 //#include "../Action3DGame.h"
 
 // ŽÀ‘Ì

@@ -151,37 +151,63 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Action3DGame.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationBase.cpp" />
     <ClCompile Include="AnimationOtoko.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="GalGame.cpp" />
+    <ClCompile Include="Favor.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ModeMenu.cpp" />
-    <ClCompile Include="ModeTitleMenu.cpp" />
-    <ClCompile Include="NovelBG.cpp" />
     <ClCompile Include="ResourceServer.cpp" />
+    <ClCompile Include="SelectComment.cpp" />
     <ClCompile Include="source\ApplicationMain.cpp" />
-    <ClCompile Include="source\ModeGame.cpp" />
-    <ClCompile Include="source\ModeTitle.cpp" />
+    <ClCompile Include="source\Mode\Action3DGame.cpp" />
+    <ClCompile Include="source\Mode\GalGame.cpp" />
+    <ClCompile Include="source\Mode\ModeGame.cpp" />
+    <ClCompile Include="source\Mode\ModeMenu.cpp" />
+    <ClCompile Include="source\Mode\ModeTitle.cpp" />
+    <ClCompile Include="source\Mode\ModeTitleMenu.cpp" />
+    <ClCompile Include="source\Novel\scripts\amg_string.cpp" />
+    <ClCompile Include="source\Novel\scripts\command_choice.cpp" />
+    <ClCompile Include="source\Novel\scripts\command_draw.cpp" />
+    <ClCompile Include="source\Novel\scripts\command_image.cpp" />
+    <ClCompile Include="source\Novel\scripts\command_label.cpp" />
+    <ClCompile Include="source\Novel\scripts\command_message.cpp" />
+    <ClCompile Include="source\Novel\scripts\command_novel.cpp" />
+    <ClCompile Include="source\Novel\scripts\dx_wrapper.cpp" />
+    <ClCompile Include="source\Novel\scripts\input_manager.cpp" />
+    <ClCompile Include="source\Novel\scripts\scripts_data.cpp" />
+    <ClCompile Include="source\Novel\scripts\script_engine.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Action3DGame.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationBase.h" />
     <ClInclude Include="AnimationOtoko.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="GalGame.h" />
+    <ClInclude Include="Favor.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="ModeMenu.h" />
-    <ClInclude Include="NovelBG.h" />
     <ClInclude Include="ResourceServer.h" />
+    <ClInclude Include="SelectComment.h" />
     <ClInclude Include="source\ApplicationMain.h" />
-    <ClInclude Include="source\ModeGame.h" />
-    <ClInclude Include="source\ModeTitle.h" />
-    <ClInclude Include="ModeTitleMenu.h" />
+    <ClInclude Include="source\Mode\Action3DGame.h" />
+    <ClInclude Include="source\Mode\GalGame.h" />
+    <ClInclude Include="source\Mode\ModeGame.h" />
+    <ClInclude Include="source\Mode\ModeMenu.h" />
+    <ClInclude Include="source\Mode\ModeTitle.h" />
+    <ClInclude Include="source\Mode\ModeTitleMenu.h" />
+    <ClInclude Include="source\Novel\scripts\amg_rect.h" />
+    <ClInclude Include="source\Novel\scripts\amg_string.h" />
+    <ClInclude Include="source\Novel\scripts\command_base.h" />
+    <ClInclude Include="source\Novel\scripts\command_choice.h" />
+    <ClInclude Include="source\Novel\scripts\command_draw.h" />
+    <ClInclude Include="source\Novel\scripts\command_image.h" />
+    <ClInclude Include="source\Novel\scripts\command_label.h" />
+    <ClInclude Include="source\Novel\scripts\command_message.h" />
+    <ClInclude Include="source\Novel\scripts\command_novel.h" />
+    <ClInclude Include="source\Novel\scripts\dx_wrapper.h" />
+    <ClInclude Include="source\Novel\scripts\input_manager.h" />
+    <ClInclude Include="source\Novel\scripts\scripts_data.h" />
+    <ClInclude Include="source\Novel\scripts\script_engine.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

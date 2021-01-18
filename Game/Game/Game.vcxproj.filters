@@ -19,6 +19,9 @@
     <Filter Include="ソース ファイル\Mode">
       <UniqueIdentifier>{533399b5-7e09-465b-94d9-1a8e9df392d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Novel">
+      <UniqueIdentifier>{032aee8e-d41a-4ed6-b417-f02b9a8ee4ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\ApplicationMain.cpp">
@@ -45,26 +48,62 @@
     <ClCompile Include="Animation.cpp">
       <Filter>ソース ファイル\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="source\ModeGame.cpp">
+    <ClCompile Include="source\Mode\ModeTitle.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
-    <ClCompile Include="GalGame.cpp">
+    <ClCompile Include="source\Mode\ModeTitleMenu.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
-    <ClCompile Include="source\ModeTitle.cpp">
+    <ClCompile Include="source\Mode\Action3DGame.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
-    <ClCompile Include="ModeTitleMenu.cpp">
+    <ClCompile Include="source\Mode\GalGame.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
-    <ClCompile Include="Action3DGame.cpp">
+    <ClCompile Include="source\Mode\ModeGame.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
-    <ClCompile Include="NovelBG.cpp">
+    <ClCompile Include="source\Mode\ModeMenu.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectComment.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ModeMenu.cpp">
-      <Filter>ソース ファイル\Mode</Filter>
+    <ClCompile Include="source\Novel\scripts\command_image.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Novel\scripts\command_label.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Novel\scripts\command_message.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Novel\scripts\dx_wrapper.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Novel\scripts\input_manager.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Novel\scripts\script_engine.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Novel\scripts\scripts_data.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Novel\scripts\amg_string.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Novel\scripts\command_choice.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Novel\scripts\command_draw.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClCompile>
+    <ClCompile Include="Favor.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Novel\scripts\command_novel.cpp">
+      <Filter>ソース ファイル\Novel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,26 +131,68 @@
     <ClInclude Include="Animation.h">
       <Filter>ソース ファイル\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="Action3DGame.h">
+    <ClInclude Include="source\Mode\ModeMenu.h">
       <Filter>ソース ファイル\Mode</Filter>
     </ClInclude>
-    <ClInclude Include="GalGame.h">
+    <ClInclude Include="source\Mode\ModeTitle.h">
       <Filter>ソース ファイル\Mode</Filter>
     </ClInclude>
-    <ClInclude Include="ModeTitleMenu.h">
+    <ClInclude Include="source\Mode\ModeTitleMenu.h">
       <Filter>ソース ファイル\Mode</Filter>
     </ClInclude>
-    <ClInclude Include="source\ModeTitle.h">
+    <ClInclude Include="source\Mode\Action3DGame.h">
       <Filter>ソース ファイル\Mode</Filter>
     </ClInclude>
-    <ClInclude Include="NovelBG.h">
+    <ClInclude Include="source\Mode\GalGame.h">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Mode\ModeGame.h">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectComment.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\command_image.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\command_label.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\command_message.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\dx_wrapper.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\input_manager.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\script_engine.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\scripts_data.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\amg_rect.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\amg_string.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\command_base.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\command_choice.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Novel\scripts\command_draw.h">
+      <Filter>ソース ファイル\Novel</Filter>
+    </ClInclude>
+    <ClInclude Include="Favor.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ModeMenu.h">
-      <Filter>ソース ファイル\Mode</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ModeGame.h">
-      <Filter>ソース ファイル\Mode</Filter>
+    <ClInclude Include="source\Novel\scripts\command_novel.h">
+      <Filter>ソース ファイル\Novel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

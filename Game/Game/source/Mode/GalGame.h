@@ -1,11 +1,12 @@
 #pragma once
 #include "../../AppFrame/source/appframe.h"
 #include <memory>
-#include "Camera.h"
-#include "Model.h"
+#include "../../Camera.h"
+#include "../../Model.h"
 #include "../../AppFrame/MouseInput.h"
-#include "NovelBG.h"
-#include "AnimationBase.h"
+#include "../../AnimationBase.h"
+#include "../../SelectComment.h"
+#include "../Novel/scripts/script_engine.h"
 
 class GalGame : public ModeBase {
 public:
@@ -17,13 +18,20 @@ public:
 	virtual bool Process();
 	virtual bool Render();
 
+	void SetFavor(int favor) {
+		_favor = favor;
+	}
+
 private:
 
 	std::unique_ptr<Camera> _pCamera;
 	std::unique_ptr<Model> _pCharaModel;
 	std::unique_ptr<Model> _pRoomModel;
 	std::unique_ptr<MouseInput> _pMouseInput;
-	std::unique_ptr<NovelBG> _pNovelBG;
 	std::unique_ptr<AnimationBase> _pAnimationBase;
+	std::unique_ptr<SelectComment> _pSelectComment;
+	std::unique_ptr<amg::ScriptEngine> _pScriptEngin;
+
+	int _favor;  //çDä¥ìx
 
 };

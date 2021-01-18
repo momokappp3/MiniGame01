@@ -9,8 +9,8 @@
 
 
 #include "AppFrame.h"
-#include "ApplicationMain.h"
-#include "ModeGame.h"
+#include "../ApplicationMain.h"
+#include "../Mode/ModeGame.h"
 
 bool ModeGame::Initialize() {
 

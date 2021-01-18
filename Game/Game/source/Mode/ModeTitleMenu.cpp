@@ -1,11 +1,11 @@
 //#include "ModeGame.h"
 #include "AppFrame.h"
-#include "source/ApplicationMain.h"
-#include "ModeTitleMenu.h"
+#include "../ApplicationMain.h"
+#include "../Mode/ModeTitleMenu.h"
 #include "Action3DGame.h"
-#include "ResourceServer.h"
+#include "../../ResourceServer.h"
 #include "GalGame.h"
-#include "source/ModeGame.h"
+#include "../Mode/ModeGame.h"
 
 ModeTitleMenu::ModeTitleMenu() {
 

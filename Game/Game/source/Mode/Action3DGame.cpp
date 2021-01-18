@@ -1,4 +1,4 @@
-#include "Action3DGame.h"
+#include "../Mode/Action3DGame.h"
 
 Action3DGame::Action3DGame() {
 

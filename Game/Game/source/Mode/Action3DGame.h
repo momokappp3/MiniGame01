@@ -1,10 +1,10 @@
 #pragma once
 #include "../../AppFrame/source/appframe.h"
 #include <memory>
-#include "Camera.h"
-#include "Model.h"
-#include "Animation.h"
-#include"AnimationBase.h"
+#include "../../Camera.h"
+#include "../../Model.h"
+#include "../../Animation.h"
+#include"../../AnimationBase.h"
 #include "../../AppFrame/Input.h"
 
 class Action3DGame : public ModeBase {

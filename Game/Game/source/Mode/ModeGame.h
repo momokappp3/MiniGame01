@@ -1,7 +1,7 @@
 
 #include "appframe.h"
-#include "../Camera.h"
-#include "../../../AppFrame/Effect3D.h"
+#include "../../Camera.h"
+#include "../../../../AppFrame/Effect3D.h"
 #include <memory>
 
 class ModeGame : public ModeBase{

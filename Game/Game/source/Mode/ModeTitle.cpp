@@ -1,11 +1,11 @@
-#include "../ModeTitleMenu.h"
+#include "../Mode/ModeTitleMenu.h"
 #include "AppFrame.h"
-#include "ApplicationMain.h"
-#include "ModeTitle.h"
+#include "../ApplicationMain.h"
+#include "../Mode/ModeTitle.h"
 #include "ModeGame.h"
-#include "../Action3DGame.h"
-#include "../../../AppFrame/Fade.h"
-#include "../ResourceServer.h"
+#include "../Mode/Action3DGame.h"
+#include "../../../../AppFrame/Fade.h"
+#include "../../ResourceServer.h"
 
 bool ModeTitle::Initialize() {
 	if (!ModeBase::Initialize()) {
@@ -26,31 +26,12 @@ bool ModeTitle::Process() {
 	if (_pInput != nullptr) {
 		_pInput->Process();
 	}
-	
-	//int key = ApplicationMain::GetInstance()->GetKey();  //ApplicatonBase‚Ìƒƒ“ƒo•Ï”_gKey
-	//int trg = ApplicationMain::GetInstance()->GetTrg();  //‰Ÿ‚µ‚½uŠÔ‚µ‚©”½‰‚µ‚È‚¢ƒL[
-
 
 	if (_pInput->_key[KEY_INPUT_RETURN]==1) {
 		ModeServer::GetInstance()->Del(this);  // ‚±‚Ìƒ‚[ƒh‚ğíœ—\–ñ
 		ModeServer::GetInstance()->Add(new ModeTitleMenu(), 1, "ModeaTitleMenu");  // Ÿ‚Ìƒ‚[ƒh‚ğ“o˜^
 	}
 
-
-
-
-
-	/*
-	if (CheckHitKey(KEY_INPUT_RETURN))	{
-		Fade::Reset();
-		Fade::Start();
-		ModeServer::GetInstance()->Del(this);  // ‚±‚Ìƒ‚[ƒh‚ğíœ—\–ñ
-		//ModeServer::GetInstance()->Add(new ModeGame(), 1, "game");  // Ÿ‚Ìƒ‚[ƒh‚ğ“o˜^
-		//ModeServer::GetInstance()->Add(new Action3DGame(), 1, "Action3DGame");  // Ÿ‚Ìƒ‚[ƒh‚ğ“o˜^
-		ModeServer::GetInstance()->Add(new ModeTitleMenu(), 1, "ModeaTitleMenu");  // Ÿ‚Ìƒ‚[ƒh‚ğ“o˜^
-	}
-
-	*/
 	return true;
 }
 
